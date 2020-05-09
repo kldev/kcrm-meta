@@ -1,0 +1,17 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE dbo.Users
+(
+    [Id] UNIQUEIDENTIFIER NOT NULL,
+    [Username] NVARCHAR(200) NOT NULL,
+    [Password] NVARCHAR(200) NOT NULL,
+    [Data] NVARCHAR(MAX) NULL
+
+    CONSTRAINT [PK_kcrm_Users_Id] PRIMARY KEY ([Id] ASC),
+    CONSTRAINT [UQ_kcrm_Users_Username] UNIQUE (Username)
+)
+
+GO

@@ -1,0 +1,81 @@
+@baseUrl = http://127.0.0.1:32000
+@username = root
+@password = secret
+
+GET {{baseUrl}}/api/ping
+
+### 
+# @name loginReq
+POST {{baseUrl}}/api/login
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+@authToken = {{loginReq.response.body.$.token}}
+###
+
+
+### contact list
+
+GET {{baseUrl}}/api/contact/list
+Authorization: Bearer {{authToken}}
+
+### query contact list - Alice filter
+
+POST {{baseUrl}}/api/contact/query
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "query": "Chris%"
+}
+
+
+### query contact list - phone filter
+
+POST {{baseUrl}}/api/contact/query
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "query": "48560501539"
+}
+
+### contact add
+POST {{baseUrl}}/api/contact/save
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "Data": {
+        "FirstName": "Chris",
+        "LastName": "Hayes",
+        "Country": "UK",
+        "Email": "chris.hays@company.co",
+        "Phones": []
+    }
+}
+
+
+### country list
+
+POST {{baseUrl}}/api/country
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "query": ""
+}
+
+### search Poland
+
+POST {{baseUrl}}/api/country
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "query": "pol"
+}

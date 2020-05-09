@@ -1,0 +1,26 @@
+import React, { useState } from 'react';
+import { ListCommandBar } from 'components/listCommandBar';
+import ContactAddPanel from './ContactAddPanel';
+
+const ContactsPage: React.FunctionComponent = () => {
+  const [showAdd, setShowAdd] = useState<boolean>(false);
+
+  const handleOnNew = () => {
+    setShowAdd(true);
+  };
+
+  const handleAddClose = () => {
+    setShowAdd(false);
+  };
+  const handleAddOnAdded = () => {};
+
+  return (
+    <>
+      <ListCommandBar onNew={handleOnNew} />
+
+      {showAdd && <ContactAddPanel onAdded={handleAddOnAdded} onClose={handleAddClose} />}
+    </>
+  );
+};
+
+export default ContactsPage;

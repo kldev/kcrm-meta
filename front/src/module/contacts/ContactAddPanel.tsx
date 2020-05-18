@@ -13,7 +13,7 @@ interface Props {
 
 interface StateProps {}
 
-const ContactAddPanel: React.FunctionComponent<Props> = (props) => {
+const ContactAddPanel: React.FunctionComponent<Props> = props => {
   const [name, setName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');

@@ -32,7 +32,7 @@ const theme = getTheme();
 type Props = DispatchProps & DispatchProps & StateProps & RouteComponentProps;
 
 class LayoutCommandBar extends React.Component<Props> {
-  static mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = (dispatch) => ({
+  static mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = dispatch => ({
     logout: () => {
       dispatch(logout());
     },
@@ -112,7 +112,7 @@ class LayoutCommandBar extends React.Component<Props> {
         key: 'welcome',
         name: `${username}`,
         itemType: ContextualMenuItemType.Normal,
-        onRender: (item) => {
+        onRender: item => {
           return (
             <Stack verticalAlign="center">
               <span>

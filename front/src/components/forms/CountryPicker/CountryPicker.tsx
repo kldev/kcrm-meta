@@ -20,7 +20,7 @@ interface StateProps {
   token: string;
 }
 
-const CountryPicker: React.FunctionComponent<Props> = (props) => {
+const CountryPicker: React.FunctionComponent<Props> = props => {
   const { token } = useSelector<RootAppState, StateProps>(({ app }) => ({
     token: app.token
   }));
@@ -30,7 +30,7 @@ const CountryPicker: React.FunctionComponent<Props> = (props) => {
 
   if (props.initial && props.initial.length > 0) {
     defaultSelection = defaultSelection.concat(
-      props.initial.map<IPersonaProps>((x) => ({ text: x.name, id: `${x.code}`, secondaryText: x.iso2 }))
+      props.initial.map<IPersonaProps>(x => ({ text: x.name, id: `${x.code}`, secondaryText: x.iso2 }))
     );
   }
 
@@ -43,7 +43,7 @@ const CountryPicker: React.FunctionComponent<Props> = (props) => {
     const list = await api.query({ query: filter } as CommonQuery);
 
     if (list.status === 200) {
-      return list.data.map<IPersonaProps>((x) => ({
+      return list.data.map<IPersonaProps>(x => ({
         text: x.name,
         id: `${x.code}`,
         secondaryText: x.iso2

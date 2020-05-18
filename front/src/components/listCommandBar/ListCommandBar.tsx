@@ -7,7 +7,7 @@ interface Props {
   farItems?: ICommandBarItemProps[];
 }
 
-const ListCommandBar: React.FunctionComponent<Props> = (props) => {
+const ListCommandBar: React.FunctionComponent<Props> = props => {
   const style: Partial<ICommandBarStyles> = {
     root: {
       borderBottom: '1px solid #ddd',

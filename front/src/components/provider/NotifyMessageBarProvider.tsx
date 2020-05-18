@@ -4,7 +4,7 @@ import { MessageBarType, MessageBar } from '@fluentui/react/lib/MessageBar';
 import { MessageBarButton } from '@fluentui/react/lib/Button';
 import { Layer } from '@fluentui/react/lib/Layer';
 
-const NotifyMessageBarProvider: React.FunctionComponent = (props) => {
+const NotifyMessageBarProvider: React.FunctionComponent = props => {
   const stackStyles: Partial<IStackStyles> = {
     root: {
       position: 'fixed',
@@ -25,7 +25,7 @@ const NotifyMessageBarProvider: React.FunctionComponent = (props) => {
 
   const errors: number[] = [];
 
-  const errorsElements = errors.map<JSX.Element>((x) => {
+  const errorsElements = errors.map<JSX.Element>(x => {
     return (
       <MessageBar
         style={{ position: 'relative' }}

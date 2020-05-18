@@ -12,7 +12,7 @@ class AuthApi {
       baseURL: `${baseUrl}`,
       headers: {},
       /// handle api status when used
-      validateStatus: (status) => {
+      validateStatus: status => {
         return true;
       },
 

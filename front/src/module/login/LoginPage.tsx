@@ -43,11 +43,11 @@ interface State {
 
 class LoginPage extends React.Component<Props, State> {
   static mapDispatchToProps = (dispatch: ThunkDispatch<RootAppState, void, any>): DispatchProps => ({
-    loginUser: (req) => {
+    loginUser: req => {
       return (dispatch(loginUser(req)) as unknown) as Promise<LoginResponse | null>;
     },
-    setErrorMessage: (message) => dispatch(setError(message)),
-    setStatus: (status) => dispatch(setStatus(status))
+    setErrorMessage: message => dispatch(setError(message)),
+    setStatus: status => dispatch(setStatus(status))
   });
 
   static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({ login }) => ({

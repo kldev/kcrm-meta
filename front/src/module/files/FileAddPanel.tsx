@@ -10,7 +10,7 @@ interface Props {
   onAdded: () => void;
 }
 
-const FileAddPanel: React.FunctionComponent<Props> = (props) => {
+const FileAddPanel: React.FunctionComponent<Props> = props => {
   const [fileMimeType, setFileMimeType] = useState<string>('');
 
   const fileRef = React.createRef<HTMLInputElement>();

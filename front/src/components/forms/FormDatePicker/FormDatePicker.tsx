@@ -39,7 +39,7 @@ interface Props {
   label: string;
 }
 
-export const FormDatePicker: React.FunctionComponent<Props> = (props) => {
+export const FormDatePicker: React.FunctionComponent<Props> = props => {
   const { value, placeholder, onSelectDate, label } = props;
   return (
     <DatePicker

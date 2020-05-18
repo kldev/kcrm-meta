@@ -16,7 +16,7 @@ export const navReducer = reducerWithInitialState(initialState)
     ...state,
     title: payload
   }))
-  .caseWithAction(actions.toggle, (state) => ({
+  .caseWithAction(actions.toggle, state => ({
     ...state,
     visible: !state.visible
   }))

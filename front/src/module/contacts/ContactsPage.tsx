@@ -20,7 +20,9 @@ const ContactsPage: React.FunctionComponent = () => {
       <ListCommandBar onNew={handleOnNew} />
       <ContactsList />
 
-      {showAdd && <ContactAddPanel onAdded={handleAddOnAdded} onClose={handleAddClose} />}
+      {showAdd && (
+        <ContactAddPanel onAdded={handleAddOnAdded} onClose={handleAddClose} />
+      )}
     </>
   );
 };

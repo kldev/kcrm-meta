@@ -11,33 +11,26 @@ interface Props {
   onConfirm: () => void;
 }
 
-export class ConfirmDialog extends React.Component<Props> {
-  public static defaultProps: Partial<Props> = {
-    message: 'Are you sure?',
-    yesButton: 'Yes',
-    noButton: 'No',
-    onCancel: () => {},
-    onConfirm: () => {}
-  };
+export const ConfirmDialog: React.FC<Props> = (props) => {
+  const { message, hidden } = props;
 
-  render() {
-    const { message } = this.props;
-
-    return (
-      <Dialog
-        hidden={this.props.hidden}
-        modalProps={{}}
-        dialogContentProps={{
-          type: DialogType.largeHeader,
-          title: message,
-          subText: ''
-        }}
-      >
-        <DialogFooter>
-          <PrimaryButton text={this.props.yesButton} onClick={() => this.props.onConfirm()} />
-          <DefaultButton text={this.props.noButton} onClick={() => this.props.onCancel()} />
-        </DialogFooter>
-      </Dialog>
-    );
-  }
-}
+  return (
+    <Dialog
+      hidden={hidden}
+      modalProps={{}}
+      dialogContentProps={{
+        type: DialogType.largeHeader,
+        title: message,
+        subText: '',
+      }}
+    >
+      <DialogFooter>
+        <PrimaryButton
+          text={props.yesButton}
+          onClick={() => props.onConfirm()}
+        />
+        <DefaultButton text={props.noButton} onClick={() => props.onCancel()} />
+      </DialogFooter>
+    </Dialog>
+  );
+};

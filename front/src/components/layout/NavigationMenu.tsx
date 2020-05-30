@@ -20,7 +20,7 @@ const menuLinks: RoleNavLink[] = [
     name: 'Contacts',
     url: paths.Contacts,
     icon: 'ContactList',
-    allowed: [roles.Root, roles.Admin, roles.User]
+    allowed: [roles.Root, roles.Admin, roles.User],
   },
   {
     isLink: false,
@@ -28,7 +28,7 @@ const menuLinks: RoleNavLink[] = [
     name: 'Clients',
     url: paths.Clients,
     icon: 'CompanyDirectory',
-    allowed: [roles.Root, roles.Admin, roles.User]
+    allowed: [roles.Root, roles.Admin, roles.User],
   },
   {
     isLink: false,
@@ -36,8 +36,8 @@ const menuLinks: RoleNavLink[] = [
     name: 'Files',
     url: paths.Files,
     icon: 'FabricFolder',
-    allowed: [roles.Root, roles.Admin]
-  }
+    allowed: [roles.Root, roles.Admin],
+  },
 ];
 
 interface StateProps {
@@ -46,13 +46,15 @@ interface StateProps {
 
 type Props = StateProps & RouteComponentProps;
 
-export class NavigationMenu extends React.Component<Props> {
-  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({ app }) => {
-    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-    const role = app.role;
+class NavigationMenu extends React.Component<Props> {
+  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({
+    app,
+  }) => {
+    // eslint-disable-next-line  no-unused-vars, @typescript-eslint/no-unused-vars
+    const { role } = app;
 
     return {
-      pages: [...menuLinks]
+      pages: [...menuLinks],
     };
   };
 
@@ -69,6 +71,7 @@ export class NavigationMenu extends React.Component<Props> {
       this.props.history.push(item.url);
     }
   };
+
   render() {
     const styles: Partial<INavStyles> = {
       root: {
@@ -77,11 +80,11 @@ export class NavigationMenu extends React.Component<Props> {
         boxSizing: 'border-box',
         overflowY: 'auto',
         paddingLeft: '5px',
-        paddingRight: '5px'
+        paddingRight: '5px',
       },
       navItem: {
-        marginTop: '2px'
-      }
+        marginTop: '2px',
+      },
     };
 
     const stackStyles: Partial<IStackItemStyles> = {
@@ -89,8 +92,8 @@ export class NavigationMenu extends React.Component<Props> {
         background: 'none',
         borderRight: '1px solid #ddd',
         paddingTop: '5px',
-        boxSizing: 'border-box'
-      }
+        boxSizing: 'border-box',
+      },
     };
 
     const { pages } = this.props;
@@ -102,8 +105,8 @@ export class NavigationMenu extends React.Component<Props> {
           styles={styles}
           groups={[
             {
-              links: pages
-            }
+              links: pages,
+            },
           ]}
         />
       </Stack.Item>
@@ -112,5 +115,8 @@ export class NavigationMenu extends React.Component<Props> {
 }
 
 export default withRouter(
-  connect<StateProps, {}, {}, RootAppState>(NavigationMenu.mapStateToProps, {})(NavigationMenu)
+  connect<StateProps, {}, {}, RootAppState>(
+    NavigationMenu.mapStateToProps,
+    {}
+  )(NavigationMenu)
 );

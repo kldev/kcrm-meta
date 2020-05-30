@@ -10,18 +10,23 @@ import { Image } from '@fluentui/react/lib/Image';
 import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import { Dashboard } from 'constant/Paths';
 
-import { loginStackStyles, logoStyles } from './LoginPageConst';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as Env from 'constant/Env';
 
 import logo from 'assets/loginScreen.png';
 import { loginStatusType } from 'store/login/types';
-import { loginUserAsync as loginUser, loginUserAsyncType, setStatus, setError } from 'store/login';
+import {
+  loginUserAsync as loginUser,
+  loginUserAsyncType,
+  setStatus,
+  setError,
+} from 'store/login';
 import { connect, MapStateToProps } from 'react-redux';
 import { RootAppState } from 'store';
 import { LoginRequest, LoginResponse } from 'api/model';
 import { ThunkDispatch } from 'redux-thunk';
 import { StringUtil } from 'commonUtil';
+import { loginStackStyles, logoStyles } from './LoginPageConst';
 
 interface DispatchProps {
   setStatus: (status: loginStatusType) => void;
@@ -42,17 +47,23 @@ interface State {
 }
 
 class LoginPage extends React.Component<Props, State> {
-  static mapDispatchToProps = (dispatch: ThunkDispatch<RootAppState, void, any>): DispatchProps => ({
-    loginUser: req => {
-      return (dispatch(loginUser(req)) as unknown) as Promise<LoginResponse | null>;
+  static mapDispatchToProps = (
+    dispatch: ThunkDispatch<RootAppState, void, any>
+  ): DispatchProps => ({
+    loginUser: (req) => {
+      return (dispatch(
+        loginUser(req)
+      ) as unknown) as Promise<LoginResponse | null>;
     },
-    setErrorMessage: message => dispatch(setError(message)),
-    setStatus: status => dispatch(setStatus(status))
+    setErrorMessage: (message) => dispatch(setError(message)),
+    setStatus: (status) => dispatch(setStatus(status)),
   });
 
-  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({ login }) => ({
+  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({
+    login,
+  }) => ({
     status: login.status,
-    errorMessage: login.errorMessage
+    errorMessage: login.errorMessage,
   });
 
   public constructor(props: Props) {
@@ -60,7 +71,7 @@ class LoginPage extends React.Component<Props, State> {
 
     this.state = {
       username: Env.Username,
-      password: Env.Password
+      password: Env.Password,
     };
   }
 
@@ -71,7 +82,10 @@ class LoginPage extends React.Component<Props, State> {
   onLogin = async () => {
     const { username, password } = this.state;
 
-    let result = await this.props.loginUser({ username, password } as LoginRequest);
+    const result = await this.props.loginUser({
+      username,
+      password,
+    } as LoginRequest);
 
     if (result && StringUtil.isEmpty(result.token) === false) {
       this.props.history.push(Dashboard);
@@ -104,14 +118,18 @@ class LoginPage extends React.Component<Props, State> {
             label="Username"
             placeholder="Enter your login"
             value={this.state.username}
-            onChange={(e, newValue) => this.setState({ username: newValue as string })}
+            onChange={(e, newValue) =>
+              this.setState({ username: newValue as string })
+            }
           />
           <TextField
             label="Password"
             placeholder="Enter your password"
             type="password"
             value={this.state.password}
-            onChange={(e, newValue) => this.setState({ password: newValue as string })}
+            onChange={(e, newValue) =>
+              this.setState({ password: newValue as string })
+            }
           />
 
           <Stack tokens={{ padding: 20 }}>
@@ -123,8 +141,7 @@ class LoginPage extends React.Component<Props, State> {
                 onClick={this.onLogin}
               />
             )}
-
-            {status === 'in-progress' && <Spinner size={SpinnerSize.large} />}
+            W{status === 'in-progress' && <Spinner size={SpinnerSize.large} />}
           </Stack>
           {this.renderErrorMessageBar()}
         </Stack>

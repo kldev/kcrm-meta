@@ -1,13 +1,19 @@
 import React from 'react';
 import { IStackStyles, Stack } from '@fluentui/react/lib/Stack';
-import { RouteComponentProps, withRouter, Switch, Route } from 'react-router-dom';
-import LayoutCommandBar from './LayoutCommandBar';
+import {
+  RouteComponentProps,
+  withRouter,
+  Switch,
+  Route,
+} from 'react-router-dom';
 import { MapStateToProps, connect } from 'react-redux';
 import { RootAppState } from 'store';
 import { StringUtil } from 'commonUtil';
 import * as Paths from 'constant/Paths';
 import { Status404Page } from 'module/statusPage';
+import LayoutCommandBar from './LayoutCommandBar';
 import NavigationMenu from './NavigationMenu';
+
 const ContactsPage = React.lazy(() => import('module/contacts/ContactsPage'));
 const FilesPage = React.lazy(() => import('module/files/FilesPage'));
 const ClientsPage = React.lazy(() => import('module/clients/ClientsPage'));
@@ -25,20 +31,24 @@ const contentStackStyles: IStackStyles = {
     paddingLeft: '0px',
     paddingRight: '0px',
     boxSizing: 'border-box',
-    maxWidth: '1600px'
-  }
+    maxWidth: '1600px',
+  },
 };
 
 const containerStackStyles: IStackStyles = {
   root: {
-    minHeight: '800px'
-  }
+    minHeight: '800px',
+  },
 };
 
 class Layout extends React.Component<Props> {
-  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({ nav, app }) => ({
-    authenticate: !StringUtil.isEmpty(app.token) && !StringUtil.isEmpty(app.username),
-    navVisible: nav.visible
+  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({
+    nav,
+    app,
+  }) => ({
+    authenticate:
+      !StringUtil.isEmpty(app.token) && !StringUtil.isEmpty(app.username),
+    navVisible: nav.visible,
   });
 
   componentDidMount() {
@@ -81,4 +91,6 @@ class Layout extends React.Component<Props> {
   }
 }
 
-export default withRouter(connect<StateProps, {}, {}, RootAppState>(Layout.mapStateToProps, {})(Layout));
+export default withRouter(
+  connect<StateProps, {}, {}, RootAppState>(Layout.mapStateToProps, {})(Layout)
+);

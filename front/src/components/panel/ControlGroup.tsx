@@ -9,7 +9,7 @@ const ControlGroup: React.FunctionComponent = () => {
       horizontalAlign="end"
       grow
       tokens={{
-        childrenGap: 15
+        childrenGap: 15,
       }}
     >
       <PrimaryButton text="Save" />

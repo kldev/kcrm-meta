@@ -10,7 +10,7 @@ interface Props {
   onAdded: () => void;
 }
 
-const FileAddPanel: React.FunctionComponent<Props> = props => {
+const FileAddPanel: React.FunctionComponent<Props> = (props) => {
   const [fileMimeType, setFileMimeType] = useState<string>('');
 
   const fileRef = React.createRef<HTMLInputElement>();
@@ -21,7 +21,12 @@ const FileAddPanel: React.FunctionComponent<Props> = props => {
   };
 
   const handleOnFileChange = async () => {
-    if (fileRef && fileRef.current && fileRef.current.files && fileRef.current.files.length > 0) {
+    if (
+      fileRef &&
+      fileRef.current &&
+      fileRef.current.files &&
+      fileRef.current.files.length > 0
+    ) {
       const file = fileRef.current.files[0];
 
       const fileType = await FileType.fromBlob(file);
@@ -37,9 +42,22 @@ const FileAddPanel: React.FunctionComponent<Props> = props => {
 
   return (
     <>
-      <Panel isOpen={true} headerText="Upload file" onDismiss={handelOnDismiss} type={PanelType.smallFixedFar}>
-        <Stack tokens={{ childrenGap: 15 }} styles={{ root: { marginBottom: 30, marginTop: 20 } }}>
-          <input type="file" ref={fileRef} onChange={handleOnFileChange} accept={acceptFiles} />
+      <Panel
+        isOpen={true}
+        headerText="Upload file"
+        onDismiss={handelOnDismiss}
+        type={PanelType.smallFixedFar}
+      >
+        <Stack
+          tokens={{ childrenGap: 15 }}
+          styles={{ root: { marginBottom: 30, marginTop: 20 } }}
+        >
+          <input
+            type="file"
+            ref={fileRef}
+            onChange={handleOnFileChange}
+            accept={acceptFiles}
+          />
           <Label>{fileMimeType}</Label>
         </Stack>
         <ControlGroup />

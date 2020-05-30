@@ -13,7 +13,7 @@ interface Props {
 
 interface StateProps {}
 
-const ContactAddPanel: React.FunctionComponent<Props> = props => {
+const ContactAddPanel: React.FunctionComponent<Props> = (props) => {
   const [name, setName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -26,12 +26,22 @@ const ContactAddPanel: React.FunctionComponent<Props> = props => {
     console.log(`$$$ ${JSON.stringify(countries)}`);
   };
 
-  const initialSelection: CountryRecord[] = [{ iso2: 'PL', name: 'Poland', code: 616 }];
+  const initialSelection: CountryRecord[] = [
+    { iso2: 'PL', name: 'Poland', code: 616 },
+  ];
 
   return (
     <>
-      <Panel isOpen={true} headerText="Add contact" onDismiss={handelOnDismiss} type={PanelType.smallFixedFar}>
-        <Stack tokens={{ childrenGap: 15 }} styles={{ root: { marginBottom: 30, marginTop: 20 } }}>
+      <Panel
+        isOpen={true}
+        headerText="Add contact"
+        onDismiss={handelOnDismiss}
+        type={PanelType.smallFixedFar}
+      >
+        <Stack
+          tokens={{ childrenGap: 15 }}
+          styles={{ root: { marginBottom: 30, marginTop: 20 } }}
+        >
           <TextField
             label="First name"
             value={name}
@@ -56,7 +66,10 @@ const ContactAddPanel: React.FunctionComponent<Props> = props => {
             }}
             autoComplete="off"
           />
-          <CountryPicker initial={initialSelection} onChange={handleCountryChange} />
+          <CountryPicker
+            initial={initialSelection}
+            onChange={handleCountryChange}
+          />
         </Stack>
         <ControlGroup />
       </Panel>

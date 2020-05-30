@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FileAddPanel from './FileAddPanel';
 import { ListCommandBar } from 'components/listCommandBar';
+import FileAddPanel from './FileAddPanel';
 
 const FilesPage: React.FunctionComponent = () => {
   const [showAdd, setShowAdd] = useState<boolean>(false);

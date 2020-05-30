@@ -7,12 +7,12 @@ abstract class BaseSecureApi {
     this.api = Axios.create({
       baseURL: `${baseUrl}`,
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      /// handle api status when used
+      // / handle api status when used
       validateStatus: () => {
         return true;
-      }
+      },
     });
   }
 }

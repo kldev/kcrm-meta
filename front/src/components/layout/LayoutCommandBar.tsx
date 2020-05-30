@@ -1,18 +1,28 @@
 import React from 'react';
 
-import { outerCommandBarStyles, commandBarWaffleButtonStyles } from './LayoutCommandBarConst';
-import { IContextualMenuItem, IContextualMenuProps, ContextualMenuItemType } from '@fluentui/react/lib/ContextualMenu';
+import {
+  IContextualMenuItem,
+  IContextualMenuProps,
+  ContextualMenuItemType,
+} from '@fluentui/react/lib/ContextualMenu';
 import { Login as LoginPath } from 'constant/Paths';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { logout } from 'store/app';
 import { toggle } from 'store/nav';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { ActionButton } from '@fluentui/react/lib/Button';
-import { ICommandBarItemProps, CommandBar } from '@fluentui/react/lib/CommandBar';
+import {
+  ICommandBarItemProps,
+  CommandBar,
+} from '@fluentui/react/lib/CommandBar';
 import { AppName } from 'constant/Env';
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { MapStateToProps, MapDispatchToProps, connect } from 'react-redux';
 import { RootAppState } from 'store';
+import {
+  outerCommandBarStyles,
+  commandBarWaffleButtonStyles,
+} from './LayoutCommandBarConst';
 
 interface DispatchProps {
   // TODO: showProfile, showPasswordReset
@@ -32,18 +42,23 @@ const theme = getTheme();
 type Props = DispatchProps & DispatchProps & StateProps & RouteComponentProps;
 
 class LayoutCommandBar extends React.Component<Props> {
-  static mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = dispatch => ({
+  static mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = (
+    dispatch
+  ) => ({
     logout: () => {
       dispatch(logout());
     },
     toggle: () => {
       dispatch(toggle());
-    }
+    },
   });
 
-  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({ nav, app }) => ({
+  static mapStateToProps: MapStateToProps<StateProps, {}, RootAppState> = ({
+    nav,
+    app,
+  }) => ({
     username: app.username,
-    title: nav.title
+    title: nav.title,
   });
 
   onShowProfile = () => {
@@ -71,12 +86,12 @@ class LayoutCommandBar extends React.Component<Props> {
           iconProps: {
             iconName: 'ProfileSearch',
             style: {
-              color: '#258DE'
-            }
+              color: '#258DE',
+            },
           },
           onClick: () => {
             this.onShowProfile();
-          }
+          },
         },
 
         {
@@ -85,12 +100,12 @@ class LayoutCommandBar extends React.Component<Props> {
           iconProps: {
             iconName: 'PasswordField',
             style: {
-              color: '#258DE'
-            }
+              color: '#258DE',
+            },
           },
           onClick: () => {
             this.onShowResetPassword();
-          }
+          },
         },
 
         {
@@ -100,11 +115,11 @@ class LayoutCommandBar extends React.Component<Props> {
           iconProps: {
             iconName: 'SignOut',
             style: {
-              color: '#258DE'
-            }
-          }
-        }
-      ]
+              color: '#258DE',
+            },
+          },
+        },
+      ],
     };
 
     return [
@@ -112,7 +127,7 @@ class LayoutCommandBar extends React.Component<Props> {
         key: 'welcome',
         name: `${username}`,
         itemType: ContextualMenuItemType.Normal,
-        onRender: item => {
+        onRender: (item) => {
           return (
             <Stack verticalAlign="center">
               <span>
@@ -120,7 +135,7 @@ class LayoutCommandBar extends React.Component<Props> {
               </span>
             </Stack>
           );
-        }
+        },
       },
       {
         key: 'button',
@@ -134,8 +149,8 @@ class LayoutCommandBar extends React.Component<Props> {
               />
             </Stack>
           );
-        }
-      }
+        },
+      },
     ];
   };
 
@@ -152,14 +167,14 @@ class LayoutCommandBar extends React.Component<Props> {
             root: {
               color: 'white',
               fontSize: 20,
-              fontWeight: 600
-            }
-          }
+              fontWeight: 600,
+            },
+          },
         },
         buttonStyles: commandBarWaffleButtonStyles,
         onClick: () => {
           this.props.toggle();
-        }
+        },
       },
       {
         key: 'appName',
@@ -173,49 +188,49 @@ class LayoutCommandBar extends React.Component<Props> {
             fontSize: 22,
             marginLeft: 20,
             padding: 0,
-            cursor: 'pointer'
+            cursor: 'pointer',
           },
           rootHovered: {
             backgroundColor: '#eee',
-            cursor: 'pointer'
+            cursor: 'pointer',
           },
           rootPressed: {
             backgroundColor: '#eee',
-            cursor: 'pointer'
+            cursor: 'pointer',
           },
           label: {
             color: theme.palette.themeDarkAlt,
             margin: 0,
-            cursor: 'pointer'
-          }
-        }
-      }
+            cursor: 'pointer',
+          },
+        },
+      },
     ];
 
     if (title && title.length > 0) {
       items.push({
         key: 'appSubHeader',
-        name: '| ' + title,
+        name: `| ${title}`,
         buttonStyles: {
           root: {
             backgroundColor: '#eee',
             fontSize: 16,
             marginLeft: 20,
             padding: 0,
-            cursor: 'pointer'
+            cursor: 'pointer',
           },
           rootHovered: {
-            backgroundColor: '#eee'
+            backgroundColor: '#eee',
           },
           rootPressed: {
-            backgroundColor: '#eee'
+            backgroundColor: '#eee',
           },
           label: {
             color: theme.palette.magentaDark,
             margin: 0,
-            cursor: 'pointer'
-          }
-        }
+            cursor: 'pointer',
+          },
+        },
       });
     }
 
@@ -226,7 +241,13 @@ class LayoutCommandBar extends React.Component<Props> {
     const outerCommandBarItems = this.getOuterItems();
     const farCommandBarItems = this.getFarItems();
 
-    return <CommandBar items={outerCommandBarItems} farItems={farCommandBarItems} styles={outerCommandBarStyles} />;
+    return (
+      <CommandBar
+        items={outerCommandBarItems}
+        farItems={farCommandBarItems}
+        styles={outerCommandBarStyles}
+      />
+    );
   }
 }
 

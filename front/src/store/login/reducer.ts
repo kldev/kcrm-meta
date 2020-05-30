@@ -9,16 +9,16 @@ export interface ILoginState {
 
 const initialState: ILoginState = {
   errorMessage: '',
-  status: 'idle'
+  status: 'idle',
 };
 
 export const loginReducer = reducerWithInitialState(initialState)
   .caseWithAction(actions.setStatus, (state, action) => ({
     ...state,
-    status: action.payload
+    status: action.payload,
   }))
   .caseWithAction(actions.setError, (state, action) => ({
     ...state,
-    errorMessage: action.payload
+    errorMessage: action.payload,
   }))
   .build();

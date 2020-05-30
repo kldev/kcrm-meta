@@ -11,12 +11,12 @@ class AuthApi {
     this.api = Axios.create({
       baseURL: `${baseUrl}`,
       headers: {},
-      /// handle api status when used
-      validateStatus: status => {
+      // / handle api status when used
+      validateStatus: (status) => {
         return true;
       },
 
-      timeout: 5 * 1000
+      timeout: 5 * 1000,
     });
   }
 

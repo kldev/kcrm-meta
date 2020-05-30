@@ -1,5 +1,9 @@
 import React from 'react';
-import { CommandBar, ICommandBarItemProps, ICommandBarStyles } from '@fluentui/react/lib/CommandBar';
+import {
+  CommandBar,
+  ICommandBarItemProps,
+  ICommandBarStyles,
+} from '@fluentui/react/lib/CommandBar';
 
 interface Props {
   onNew: () => void; //
@@ -7,13 +11,13 @@ interface Props {
   farItems?: ICommandBarItemProps[];
 }
 
-const ListCommandBar: React.FunctionComponent<Props> = props => {
+const ListCommandBar: React.FunctionComponent<Props> = (props) => {
   const style: Partial<ICommandBarStyles> = {
     root: {
       borderBottom: '1px solid #ddd',
       marginBottom: '20px',
-      marginTop: 10
-    }
+      marginTop: 10,
+    },
   };
 
   const items: ICommandBarItemProps[] = [
@@ -22,9 +26,9 @@ const ListCommandBar: React.FunctionComponent<Props> = props => {
       onClick: props.onNew,
       text: 'Add new',
       iconProps: {
-        iconName: 'Add'
-      }
-    }
+        iconName: 'Add',
+      },
+    },
   ];
 
   const farItems: ICommandBarItemProps[] = [];

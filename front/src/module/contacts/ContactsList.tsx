@@ -19,13 +19,13 @@ const setupColumns = () => {
       key: 'country',
       minWidth: 50,
       name: 'Country',
-      fieldName: 'country'
+      fieldName: 'country',
     },
     {
       key: 'email',
       minWidth: 200,
       name: 'email',
-      fieldName: 'email'
+      fieldName: 'email',
     },
     {
       key: 'name',
@@ -37,8 +37,8 @@ const setupColumns = () => {
             {item.surname} {item.name}
           </>
         );
-      }
-    }
+      },
+    },
   ];
 };
 
@@ -47,7 +47,7 @@ const ContactsList: React.FC = (props) => {
   const columns = setupColumns();
 
   const { token } = useSelector<RootAppState, StateProps>(({ app }) => ({
-    token: app.token
+    token: app.token,
   }));
 
   useEffect(() => {

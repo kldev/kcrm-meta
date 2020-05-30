@@ -1,6 +1,6 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import * as actions from './actions';
 import { StringUtil } from 'commonUtil';
+import * as actions from './actions';
 
 export interface IAppState {
   token: string;
@@ -15,15 +15,18 @@ const initialState: IAppState = {
   role: '',
   username: '',
   pageTitle: '',
-  activeView: 'login'
+  activeView: 'login',
 };
 
 if (window.sessionStorage) {
   if (
     window.sessionStorage.getItem('front-app') &&
-    StringUtil.isEmpty(window.sessionStorage.getItem('front-app') as string) === false
+    StringUtil.isEmpty(window.sessionStorage.getItem('front-app') as string) ===
+      false
   ) {
-    const payload = JSON.parse(window.sessionStorage.getItem('front-app') as string) as {
+    const payload = JSON.parse(
+      window.sessionStorage.getItem('front-app') as string
+    ) as {
       role: string;
       username: string;
       token: string;
@@ -39,14 +42,17 @@ export const appReducer = reducerWithInitialState(initialState)
   .caseWithAction(actions.loginSuccess, (state, action) => {
     const { role, username, token } = action.payload;
     if (window.sessionStorage) {
-      window.sessionStorage.setItem('front-app', JSON.stringify(action.payload));
+      window.sessionStorage.setItem(
+        'front-app',
+        JSON.stringify(action.payload)
+      );
     }
 
     return {
       ...state,
       role,
       username,
-      token
+      token,
     };
   })
   .caseWithAction(actions.logout, (state, action) => {

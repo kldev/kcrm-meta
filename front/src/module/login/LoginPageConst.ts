@@ -11,17 +11,17 @@ export const loginStackStyles: IStackStyles = {
     border: '1px solid #ddd',
     minWidth: '400px',
     marginTop: '200px',
-    backgroundColor: theme.palette.white
-  }
+    backgroundColor: theme.palette.white,
+  },
 };
 
 export const logoStyles: IImageStyles = {
   root: {
     background: theme.palette.themeDarkAlt,
     padding: '10px',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   image: {
-    maxHeight: '180px'
-  }
+    maxHeight: '180px',
+  },
 };

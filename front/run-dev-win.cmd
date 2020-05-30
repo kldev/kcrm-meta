@@ -6,4 +6,4 @@ set REACT_APP_PASSWORD=secret
 
 set REACT_APP_BASE_URL=http://127.0.0.1:32000
 set PORT=9999
-npm start
+yarn start

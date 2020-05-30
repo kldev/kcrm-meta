@@ -1,1 +1,0 @@
-prettier --config .prettierrc.json --write 'src/**/*.tsx' 'src/**/*.ts'

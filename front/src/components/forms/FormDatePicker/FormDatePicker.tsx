@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { DatePicker, DayOfWeek, IDatePickerStrings } from '@fluentui/react/lib/DatePicker';
+import {
+  DatePicker,
+  DayOfWeek,
+  IDatePickerStrings,
+} from '@fluentui/react/lib/DatePicker';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -15,12 +19,33 @@ const DayPickerStrings: IDatePickerStrings = {
     'September',
     'October',
     'November',
-    'December'
+    'December',
   ],
 
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  shortMonths: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
 
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  days: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ],
 
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
@@ -29,7 +54,7 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  closeButtonAriaLabel: 'Close date picker',
 };
 
 interface Props {
@@ -39,7 +64,7 @@ interface Props {
   label: string;
 }
 
-export const FormDatePicker: React.FunctionComponent<Props> = props => {
+export const FormDatePicker: React.FunctionComponent<Props> = (props) => {
   const { value, placeholder, onSelectDate, label } = props;
   return (
     <DatePicker

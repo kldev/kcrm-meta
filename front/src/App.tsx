@@ -11,26 +11,22 @@ const Layout = React.lazy(() => import('components/layout/Layout'));
 
 interface StateProps {}
 
-class App extends React.Component {
-  render() {
-    /* Todo create layout after login. move routes theres */
-    /* Todo create layout for errors. move routes theres */
+const App: React.FC = () => {
+  return (
+    <Router>
+      <Fabric id="app">
+        <NotifyMessageBarProvider>
+          <React.Suspense fallback={null}>
+            <Switch>
+              <Route path={Paths.Login} component={LoginPage} />
+              <Route path={Paths.Home} component={Layout} />
+              {/* <Route component={Page404} /> */}
+            </Switch>
+          </React.Suspense>
+        </NotifyMessageBarProvider>
+      </Fabric>
+    </Router>
+  );
+};
 
-    return (
-      <Router>
-        <Fabric id="app">
-          <NotifyMessageBarProvider>
-            <React.Suspense fallback={null}>
-              <Switch>
-                <Route path={Paths.Login} component={LoginPage} />
-                <Route path={Paths.Home} component={Layout} />
-                {/* <Route component={Page404} /> */}
-              </Switch>
-            </React.Suspense>
-          </NotifyMessageBarProvider>
-        </Fabric>
-      </Router>
-    );
-  }
-}
 export default App;

@@ -8,20 +8,20 @@ export interface INavState {
 
 const initialState: INavState = {
   visible: true,
-  title: ''
+  title: '',
 };
 
 export const navReducer = reducerWithInitialState(initialState)
   .caseWithAction(actions.setPageTitle, (state, { payload }) => ({
     ...state,
-    title: payload
+    title: payload,
   }))
-  .caseWithAction(actions.toggle, state => ({
+  .caseWithAction(actions.toggle, (state) => ({
     ...state,
-    visible: !state.visible
+    visible: !state.visible,
   }))
   .caseWithAction(actions.setVisible, (state, { payload }) => ({
     ...state,
-    visible: payload
+    visible: payload,
   }))
   .build();

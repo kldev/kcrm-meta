@@ -10,7 +10,7 @@ import { loginReducer } from './login';
 const rootReducer = combineReducers({
   app: appReducer,
   nav: navReducer,
-  login: loginReducer
+  login: loginReducer,
 });
 
 export type RootAppState = ReturnType<typeof rootReducer>; // create type base on object

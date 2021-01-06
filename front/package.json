@@ -10,7 +10,7 @@
     "@types/jest": "^24.0.0",
     "@uifabric/icons": "^7.3.47",
     "@uifabric/styling": "^7.12.14",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-typescript": "^7.2.1",
